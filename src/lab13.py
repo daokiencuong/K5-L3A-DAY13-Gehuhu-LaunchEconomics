@@ -272,6 +272,24 @@ def in_bang_d(reqs):
           f"{reopen_scope:.2%} trong phạm vi pilot.")
 
 
+def in_bang_e(reqs):
+    """Tính thử các chỉ số E1 từ dữ liệu yêu cầu hiện có."""
+    dong = reqs['dong_trong_24h'].astype(int)
+    mo_lai = reqs['mo_lai_trong_7_ngay'].astype(int)
+    chinh_so = (dong.eq(1) & mo_lai.eq(0))
+    xem_lai = reqs[reqs['duoc_xem_lai'].astype(int).eq(1)]
+    sua_bo = xem_lai['quyet_dinh_xem_lai'].isin(['sua', 'bo'])
+    print('\nE1 · Chỉ số tính thử trên dữ liệu hiện có')
+    print(f"Chính: đóng trong 24h và không mở lại trong 7 ngày = "
+          f"{int(chinh_so.sum())}/{len(reqs)} = {chinh_so.mean():.2%}")
+    print(f"Dùng: sửa hoặc bỏ gợi ý = {int(sua_bo.sum())}/{len(xem_lai)} "
+          f"= {sua_bo.mean():.2%}")
+    print(f"An toàn: mở lại trong 7 ngày = {int(mo_lai.sum())}/{len(reqs)} "
+          f"= {mo_lai.mean():.2%}")
+    print('Các chỉ số dùng/an toàn bổ sung cần event mới trong pilot; '
+          'chưa tính được từ CSV hiện tại.')
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -283,3 +301,4 @@ if __name__ == '__main__':
     in_bang_a4(runs, reqs)
     in_bang_b(runs, reqs)
     in_bang_d(reqs)
+    in_bang_e(reqs)
