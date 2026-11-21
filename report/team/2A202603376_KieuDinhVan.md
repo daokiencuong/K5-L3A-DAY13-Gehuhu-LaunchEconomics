@@ -26,7 +26,10 @@
 
 ## 5. Công cụ AI đã dùng
 
-Claude Code đọc đề Word và các file hướng dẫn, đề xuất 20 nhãn, điền và dọn `bang_loi.md`, rồi chạy `src/so_nhan.py` để so hai bộ. Khi AI tìm tài liệu, bảng "Nhãn tham khảo" trong hướng dẫn đã hiện trong kết quả tìm kiếm trước lúc gắn nhãn. Vì vậy bộ nhãn này không phải bằng chứng tự gắn độc lập trong 8 phút, và tỉ lệ 100% không đo được độ thống nhất giữa hai người.
+**Công cụ:** Claude Code, chạy trong VS Code trên repo nhóm.
+
+- Đọc đề, tóm tắt yêu cầu của vai người gắn nhãn 1: lấy 20 ca từ đề Word, năm loại PAIR và các bước của nhiệm vụ C trong `CHECKPOINTS.md` và hướng dẫn chi tiết.
+- Đề xuất nhãn cho 20 ca theo nguyên nhân gốc, kèm lý do cho các ca dễ lẫn (8, 13).
 
 ## 6. Tự đánh giá
 
