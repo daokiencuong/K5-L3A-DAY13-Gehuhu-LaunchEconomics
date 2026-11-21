@@ -5,7 +5,8 @@
 * Tên nhóm: Gehuhu
 * Lớp: L3A
 * Repo nhóm: [K5-L3A-DAY13-Gehuhu-LaunchEconomics](https://github.com/daokiencuong/K5-L3A-DAY13-Gehuhu-LaunchEconomics)
-* Nhánh nộp, commit chốt:
+* Nhánh nộp: `main`
+* Commit chốt: commit mới nhất trên nhánh `main` sau khi đẩy bản cuối.
 
 ## Thành viên
 
@@ -91,12 +92,13 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
-*
+* Người kiểm số: đối chiếu A–B và D1 bằng tính tay/script độc lập, bổ sung bảng chi phí và rà nhãn `simulated`.
 
 ### Đóng góp cụ thể
 
-*
+* Chạy code trên máy thứ hai; kiểm A1–A4, B1–B4 và D1; ghi lại sai khác cần sửa (274,7 đ thay vì số in tròn 275 đ; cập nhật trạng thái báo cáo cá nhân trong bản tổng hợp).
+* Đối chiếu số với CSV, phép tính tay và đầu ra của `lab13.py`; kiểm YAML, cỡ mẫu và nhãn số giả lập.
 
 ### Bằng chứng
 
-*
+* `report/team/2A202603375_PhanBaAn.md`; `report/team/bang_chi_phi.md`; `report/team/pilot_plan.yaml`; các commit `7559d90`, `1125122`, `d3fff9f`.

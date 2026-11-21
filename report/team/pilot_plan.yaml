@@ -28,7 +28,14 @@ pilot:
     randomized: true
     stratify_by: "depot"
     randomization_seed: 20261201
-  rollout: [0.10, 0.25, 0.50] # 4, 10, rồi 20 nhân viên can thiệp; 20 nhân viên đối chứng chạy đồng thời
+  rollout: [0.10, 0.25, 0.50] # 4, 10, rồi 20 nhân viên can thiệp; 20 đối chứng cố định; các nhân viên còn lại chưa vào pilot
+  schedule:
+    readiness_deadline: "2026-12-15"
+    start_date: "2026-12-15"
+    enrollment_end: "2026-12-29"
+    outcome_followup_end: "2027-01-05" # đủ 7 ngày theo dõi sau khi kết thúc nhận yêu cầu
+    decision_date: "2027-01-05"
+    progression: "Chỉ sang bước rollout kế tiếp khi đủ thời lượng bước, không vi phạm luật dừng và Giám đốc vận hành ghi quyết định; bước 50% chỉ bắt đầu sau khi đạt cỡ mẫu hiệu dụng đã định trước."
   primary_metric:
     name: "dong_trong_24h_khong_mo_lai_7_ngay"
     baseline: 0.70
@@ -48,10 +55,10 @@ pilot:
     predeclared: "Đăng ký trước chỉ số chính, MDE 0,06, luật dừng và ngày quyết định 2027-01-05."
     minimum_clusters: "20 nhân viên mỗi nhánh; tổng 40 nhân viên."
   stop_rules:
-    - "NẾU tỉ lệ mở lại 7 ngày của nhóm can thiệp cao hơn đối chứng ít nhất 2 điểm phần trăm hoặc vượt 6%, hoặc có ít nhất 1 ca hoàn trùng TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành tắt trợ lý trong 30 phút KHÔNG THÌ không được chuyển sang bước rollout tiếp theo."
+    - "NẾU tỉ lệ mở lại 7 ngày của nhóm can thiệp cao hơn đối chứng ít nhất 2 điểm phần trăm hoặc vượt 6% trong một cohort đã đủ 7 ngày theo dõi, hoặc xác minh được ít nhất 1 ca hoàn trùng TRONG bất kỳ ngày nào THÌ Giám đốc vận hành tắt trợ lý trong 30 phút KHÔNG THÌ không được chuyển sang bước rollout tiếp theo."
     - "NẾU chi phí mỗi việc thành công vượt 8.000 đ TRONG 2 tuần liên tiếp THÌ PM thu hẹp pilot về noi_dia và giới hạn 2 lần chạy KHÔNG THÌ không được mở rộng sang hang_nang."
     - "NẾU tỉ lệ nhân viên sửa hoặc bỏ gợi ý vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày KHÔNG THÌ không được chuyển bước rollout tiếp theo."
-  interim_looks: "Kiểm tra chỉ số an toàn hằng ngày; chỉ đọc chỉ số chính tại bước 50% sau khi đạt cỡ mẫu hiệu dụng đã định trước."
+  interim_looks: "Kiểm tra chỉ số an toàn hằng ngày; theo dõi chi phí và mức sử dụng hằng tuần; chỉ đọc chỉ số chính một lần tại bước 50%, sau khi đạt ít nhất 859 mẫu hiệu dụng mỗi nhánh và hoàn tất theo dõi mở lại 7 ngày."
   rollback: "Giám đốc vận hành bấm cờ tắt; hiệu lực trong 30 phút; nhân viên xử lý yêu cầu theo luồng tự làm hiện tại."
   decision_date: "2027-01-05"
   simulated_inputs:

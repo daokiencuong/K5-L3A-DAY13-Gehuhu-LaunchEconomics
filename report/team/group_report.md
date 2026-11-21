@@ -12,7 +12,7 @@ Nhóm lập hồ sơ Gate 2a cho trợ lý hoàn phí LogiX-VN từ dữ liệu 
 ## 3. Giải pháp
 
 - **A–B:** triển khai hàm chi phí và phân tích độ nhạy trong [`src/lab13.py`](../../src/lab13.py); kết quả và giả định ở [`bang_chi_phi.md`](bang_chi_phi.md).
-- **C:** lập hai bộ nhãn, tính đồng thuận và đề xuất khắc phục năm loại lỗi trong [`bang_loi.md`](bang_loi.md). Trạng thái CP3 ghi rõ người gắn nhãn 2 còn phải tự rà, xác nhận quy trình trước khi nộp.
+- **C:** hai bộ nhãn đã được điền và đối chiếu 20/20; bảng khắc phục đủ năm loại trong [`bang_loi.md`](bang_loi.md). Hồ sơ cá nhân khai báo có hỗ trợ AI khi chuẩn bị nhãn người 2, nên báo cáo giữ rõ giới hạn này thay vì coi 100% là bằng chứng độc lập đã được xác minh.
 - **D:** tính cỡ mẫu, chọn phân nhóm theo nhân viên và ghi luật dừng trong [`pilot_plan.yaml`](pilot_plan.yaml).
 - **E:** lập chỉ số, danh sách event và rủi ro kinh tế trong [`chi_so.md`](chi_so.md); tổng hợp đề xuất trong [`ho_so_launch_v0.md`](ho_so_launch_v0.md).
 
@@ -30,7 +30,7 @@ Nhóm lập hồ sơ Gate 2a cho trợ lý hoàn phí LogiX-VN từ dữ liệu 
 
 ## 6. Tổng hợp đóng góp
 
-Nhóm phân vai theo TEAM.md: Đào Kiên Cường phụ trách code và điều phối; Kiều Đình Văn gắn nhãn 1; Phí Hoàng Nam gắn nhãn 2 và giữ hồ sơ; Phan Bá An kiểm số. Mỗi thành viên cần tự xác nhận phần đóng góp và bằng chứng trong báo cáo cá nhân trước khi nộp; báo cáo cá nhân của Cường và An hiện chưa có trong repo.
+Nhóm phân vai theo TEAM.md: Đào Kiên Cường phụ trách code và điều phối; Kiều Đình Văn gắn nhãn 1; Phí Hoàng Nam gắn nhãn 2 và giữ hồ sơ; Phan Bá An kiểm số. Cả bốn báo cáo cá nhân đã có trong repo; mỗi thành viên cần tự đọc lại và xác nhận nội dung đóng góp trước khi nộp.
 
 ## 7. Hạn chế và hướng cải thiện
 

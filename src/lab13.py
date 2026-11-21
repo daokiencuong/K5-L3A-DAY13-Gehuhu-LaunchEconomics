@@ -296,7 +296,10 @@ if __name__ == '__main__':
     kiem_tra_dap_an_biet_truoc()
     ket_qua = mo_hinh(runs, reqs)
     for ten, gia_tri in ket_qua.items():
-        print(f'{ten:12s} {gia_tri:>14,.0f}')
+        if ten == 'hoa_don_moi_yc':
+            print(f'{ten:12s} {gia_tri:>14,.1f}')
+        else:
+            print(f'{ten:12s} {gia_tri:>14,.0f}')
     in_bang_a3(runs, reqs)
     in_bang_a4(runs, reqs)
     in_bang_b(runs, reqs)
