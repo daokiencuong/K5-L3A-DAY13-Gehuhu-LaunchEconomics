@@ -66,7 +66,7 @@ Gốc (A2): 4.472 đ [simulated]. Tự kiểm: mỗi kịch bản "giảm một 
 ## B2 · Đổi một cặp và xếp hạng
 
 - Giá token gấp đôi cùng lúc tỉ lệ xem lại gấp đôi: 6.543 đ, +46,3% (simulated), đúng bằng tổng hai tác động riêng (5,6% + 40,7%) vì mô hình cộng tuyến tính.
-- Xếp hạng ba yếu tố ảnh hưởng mạnh nhất: 1. Số ca làm lại (±51,8%) · 2. Tỉ lệ xem lại (±40,7%) · 3. Lương nhân viên (+23,1% khi tăng 25%). Giá token chỉ ±5,6%, nên pilot phải theo dõi tỉ lệ làm lại và xem lại, không phải giá token.
+- Xếp hạng ba yếu tố ảnh hưởng mạnh nhất: 1. Số ca làm lại (+51,8% khi gấp đôi; −25,9% khi giảm nửa) · 2. Tỉ lệ xem lại (+40,7%; −20,3%) · 3. Lương nhân viên (+23,1% khi tăng 25%) [simulated]. Giá token chỉ +5,6% khi gấp đôi, −2,8% khi giảm nửa, nên pilot phải theo dõi tỉ lệ làm lại và xem lại, không phải giá token.
 
 ## B3 · Giới hạn chạy lại có thật sự rẻ hơn
 

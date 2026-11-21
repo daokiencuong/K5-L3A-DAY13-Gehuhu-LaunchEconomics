@@ -1,43 +1,37 @@
-# Báo cáo nhóm · Lab 13 · Gehuhu · L3A
+# Báo cáo nhóm Lab 13 Gehuhu L3A
 
 ## 1. Thông tin nhóm
 
-- Nhóm: Gehuhu · Lớp: L3A.
-- Thành viên và vai trò: xem [TEAM.md](../../TEAM.md).
+Nhóm Gehuhu, lớp L3A, gồm Đào Kiên Cường (code), Phan Bá An (kiểm số), Kiều Đình Văn (nhãn 1), Phí Hoàng Nam (nhãn 2 và hồ sơ). Đóng góp và commit nằm trong [TEAM.md](../../TEAM.md).
 
 ## 2. Mục tiêu và cách tiếp cận
 
-Nhóm lập hồ sơ Gate 2a cho trợ lý hoàn phí LogiX-VN từ dữ liệu giả lập: tính chi phí mỗi việc thành công; kiểm tra nhân viên có dùng gợi ý không; xác định cách phát hiện và xử lý lỗi; thiết kế pilot có đối chứng, cỡ mẫu và luật dừng. Các chỉ số trong đợt chạy thử được mô tả như số liệu mẫu, không diễn giải thành tác động nhân quả vì chưa có đối chứng trong bộ dữ liệu.
+Lập hồ sơ Gate 2a cho trợ lý hoàn phí LogiX-VN từ 1.200 yêu cầu và 1.624 lần chạy giả lập. Tính mọi chi phí chạy, xem lại và làm lại; chỉ chia cho việc thành công. Kết quả chạy thử là mô tả mẫu, chưa chứng minh tác động của trợ lý vì chưa có đối chứng.
 
 ## 3. Giải pháp
 
-- **A–B:** triển khai hàm chi phí và phân tích độ nhạy trong [`src/lab13.py`](../../src/lab13.py); kết quả và giả định ở [`bang_chi_phi.md`](bang_chi_phi.md).
-- **C:** lập hai bộ nhãn, tính đồng thuận và đề xuất khắc phục năm loại lỗi trong [`bang_loi.md`](bang_loi.md). Trạng thái CP3 ghi rõ người gắn nhãn 2 còn phải tự rà, xác nhận quy trình trước khi nộp.
-- **D:** tính cỡ mẫu, chọn phân nhóm theo nhân viên và ghi luật dừng trong [`pilot_plan.yaml`](pilot_plan.yaml).
-- **E:** lập chỉ số, danh sách event và rủi ro kinh tế trong [`chi_so.md`](chi_so.md); tổng hợp đề xuất trong [`ho_so_launch_v0.md`](ho_so_launch_v0.md).
+Code A–B–D–E ở [lab13.py](../../src/lab13.py); số và giả định ở [bảng chi phí](bang_chi_phi.md). CP3 có hai bộ nhãn và [khắc phục 5 loại](bang_loi.md). [Pilot plan](pilot_plan.yaml) quy định phân nhóm, mẫu, lịch và luật dừng; [chỉ số](chi_so.md) nối phép đo với event; [hồ sơ launch](ho_so_launch_v0.md) tổng hợp quyết định. Kiểm tra trong `.venv` Python 3.15: code chạy hết, A1 đạt, so nhãn 20/20, YAML đọc được và `pip check` không báo lỗi phụ thuộc.
 
 ## 4. Kết quả
 
-- Chi phí mỗi việc thành công toàn mẫu: **4.472 đ [simulated]**; trong phạm vi nội địa và hàng nặng, sau chi phí cố định là **4.599 đ** ở 45.000 yêu cầu/tháng.
-- Làm lại là yếu tố nhạy nhất: gấp đôi làm CPS tăng **51,8% lên 6.787 đ [simulated]**. Giới hạn 2 lần có tổng chi phí hệ thống thấp nhất trong ba kịch bản: **6.901.220 đ [simulated]**.
-- Chỉ số trong mẫu: đóng trong 24 giờ và không mở lại là **82,83%**; sửa/bỏ gợi ý là **27,12%**; mở lại trong 7 ngày là **4,25%**. Đây là mô tả dữ liệu giả lập, không phải mức tăng do trợ lý gây ra.
-- Pilot phân ngẫu nhiên theo nhân viên, 20 can thiệp và 20 đối chứng; chấp nhận MDE 6 điểm. Nếu hiệu ứng thật chỉ 5 điểm, power ước tính là **0,64**.
-- Đề xuất trong hồ sơ: **Go có điều kiện**, giới hạn phạm vi vào `noi_dia` và `hang_nang`, phụ thuộc vào điều kiện an toàn, đo lường và khắc phục đã ghi trong hồ sơ.
+- CPS toàn mẫu **4.472 đ [simulated]**; phạm vi nội địa + hàng nặng, cộng cố định ở 45.000 yêu cầu/tháng: **4.599 đ [simulated]**.
+- Làm lại gấp đôi: CPS **+51,8% lên 6.787 đ [simulated]**. Giới hạn 2 lần chạy có tổng chi phí hệ thống thấp nhất: **6.901.220 đ [simulated]**.
+- Trong mẫu giả lập: chỉ số chính **82,83%**; sửa/bỏ gợi ý **27,12%**; mở lại trong 7 ngày **4,25%**.
+- Hai bộ nhãn trùng **20/20 = 100%**. Ngày 21/11/2026, người dùng xác nhận Nam và Văn đã tự rà và xác nhận nhãn; bước gắn nhãn ban đầu có hỗ trợ AI, không được ghi thành quy trình gắn độc lập trong 8 phút.
+- Đề xuất: **Go có điều kiện**, chỉ pilot `noi_dia` và `hang_nang`; chi tiết điều kiện trong hồ sơ launch.
 
-## 5. Khó khăn và cách xử lý
+## 5. Đánh đổi của pilot
 
-40 nhân viên không đủ để phát hiện mức chênh 5 điểm với thiết kế theo cụm: mẫu hiệu dụng tối đa là 1.000 mỗi nhánh, thấp hơn 1.251 yêu cầu cần thiết. Nhóm ghi rõ đánh đổi sang MDE 6 điểm và nêu power 0,64 nếu tác động thật chỉ là 5 điểm. Dữ liệu thời gian xem lại/làm lại là simulated, nên pilot cần thay bằng thời gian đo thật sau tuần đầu.
+Với 40 nhân viên, thiết kế theo cụm không đủ phát hiện 5 điểm: giới hạn 1.000 mẫu hiệu dụng/nhánh < 1.251. Chọn 20 nhân viên/nhánh, MDE 6 điểm, ít nhất 299 yêu cầu/người; nếu hiệu ứng thật là 5 điểm, power còn khoảng 0,64. Kế hoạch: chuẩn bị xong 30/11/2026; rollout 10% ngày 01–09/12, 25% ngày 10–18/12, 50% và lấy mẫu chính ngày 19–31/12; theo dõi đóng trong 24 giờ tới 01/01 và mở lại đủ 7 ngày tới 08/01/2027; quyết định 09/01. Thiếu mẫu thì hoãn quyết định theo kế hoạch, không kết luận sớm.
 
-## 6. Tổng hợp đóng góp
+## 6. Đóng góp và công cụ
 
-Nhóm phân vai theo TEAM.md: Đào Kiên Cường phụ trách code và điều phối; Kiều Đình Văn gắn nhãn 1; Phí Hoàng Nam gắn nhãn 2 và giữ hồ sơ; Phan Bá An kiểm số. Mỗi thành viên cần tự xác nhận phần đóng góp và bằng chứng trong báo cáo cá nhân trước khi nộp; báo cáo cá nhân của Cường và An hiện chưa có trong repo.
+Đóng góp A–E được đối chiếu với commit trong TEAM. Codex hỗ trợ rà soát và hoàn thiện hồ sơ; báo cáo cá nhân giữ khai báo AI đúng nguồn. Theo phạm vi yêu cầu lần hoàn thiện này, không tạo thêm báo cáo cá nhân Cường/An; đây không phải xác nhận đã đủ bốn báo cáo theo yêu cầu gốc.
 
-## 7. Hạn chế và hướng cải thiện
+## 7. Duyệt chéo và hạn chế
 
-Dữ liệu đầu vào hoàn toàn giả lập và đợt chạy thử chưa có nhóm đối chứng, nên chưa thể kết luận mức cải thiện do trợ lý. Cần sửa, xác minh khoá chống trùng và đối soát sổ cái ở các ca 7 và 20; xác nhận quy trình nhãn CP3; bật đủ event có `trace_id`; dùng số phút lao động đo thực tế; và giữ luật dừng trước khi bắt đầu pilot.
+Chưa nhận hồ sơ nhóm được chấm và kết quả trao đổi Gate 2a; [phiếu chấm](phieu_cham.md) phải phản ánh dữ liệu thực tế khi có. Chưa ghi nhận việc nộp LMS của từng thành viên. Trước pilot cần kiểm chứng chống hoàn trùng, đối soát sổ cái và đo thời gian lao động thật; event/ngưỡng đang là thiết kế, chưa phải kết quả triển khai.
 
-## 8. Tài liệu tham khảo
+## 8. Nguồn
 
-- `README.md`, `CHECKPOINTS.md`, `RUBRIC.md`, `SUBMISSION.md` trong repo bài lab.
-- [`docs/du_lieu_va_cong_thuc.md`](../../docs/du_lieu_va_cong_thuc.md) và [`docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md`](../../docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md).
-- Erol và cộng sự, *Cost-of-Pass: An Economic Framework for Evaluating Language Models*; Google PAIR, *People + AI Guidebook*, “Errors + Graceful Failure”.
+[CHECKPOINTS](../../CHECKPOINTS.md), [RUBRIC](../../RUBRIC.md), [SUBMISSION](../../SUBMISSION.md), [dữ liệu và công thức](../../docs/du_lieu_va_cong_thuc.md), [hướng dẫn chi tiết](../../docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md) và các commit trong TEAM.

@@ -6,7 +6,7 @@ Người giữ hồ sơ: Phí Hoàng Nam · Nhóm Gehuhu · Lớp L3A. Nguồn t
 
 ## Hai bộ nhãn và kết quả đối chiếu
 
-Người gắn nhãn 1: Kiều Đình Văn (nhan_nguoi_1.md). Người gắn nhãn 2: Phí Hoàng Nam (nhan_nguoi_2.md).
+Người gắn nhãn 1: Kiều Đình Văn ([bộ nhãn 1](nhan_nguoi_1.md)). Người gắn nhãn 2: Phí Hoàng Nam ([bộ nhãn 2](nhan_nguoi_2.md)). Ngày 21/11/2026, người dùng xác nhận cả hai đã tự rà đủ 20 ca và xác nhận nhãn. Quá trình chuẩn bị có hỗ trợ AI được khai báo trong báo cáo cá nhân; không coi bước tự rà sau đó là bằng chứng đã gắn độc lập trong 8 phút.
 
 ND = Do người dùng · HT = Hệ thống · NC = Ngữ cảnh · GH = Giới hạn hệ thống · NG = Ngầm.
 
@@ -57,8 +57,8 @@ Các ngưỡng dưới đây là **đề xuất cho pilot**, chưa phải kết 
 
 | Ca | Loại lỗi | Phát hiện bằng gì (event, ngưỡng, tần suất) | Khắc phục thế nào | Ai phụ trách |
 | --: | --- | --- | --- | --- |
-| 9 | Do người dùng | Ghi `input_validation_failed` với `trace_id`, `request_id`, `reason=wrong_order_id_type`; hằng ngày cảnh báo khi số yêu cầu lỗi này / tổng yêu cầu nhập mã > 2%. | Phân biệt mã sàn và mã vận đơn; tra ánh xạ khi có dữ liệu và yêu cầu khách xác nhận; không tra được thì hướng dẫn tìm mã vận đơn kèm ví dụ/ảnh, cho nhập lại. | PM trợ lý hoàn phí |
-| 7 | Hệ thống | Nối `customer_message_sent(status=refunded)` với `refund_ledger_write(result=ok)` theo `trace_id` và `refund_id`; đối soát mỗi giờ, cảnh báo ngay khi có ≥ 1 tin đã hoàn mà thiếu ghi sổ thành công. | Chỉ báo đã hoàn khi sổ cái xác nhận thành công; sau 3 lần lỗi 503 báo đang xử lý, chuyển nhân viên kèm trace; mọi lần thử lại dùng cùng khoá chống trùng. | Kỹ sư trưởng agent |
+| 9 | Do người dùng | Ghi `input_validation_failed` với `trace_id`, `request_id`, `reason=wrong_order_id_type`; hằng ngày cảnh báo khi số yêu cầu lỗi này / số yêu cầu có bước nhập mã (`order_id_submitted`) > 2%. | Phân biệt mã sàn và mã vận đơn; tra ánh xạ khi có dữ liệu và yêu cầu khách xác nhận; không tra được thì hướng dẫn tìm mã vận đơn kèm ví dụ/ảnh, cho nhập lại. | PM trợ lý hoàn phí |
+| 7 | Hệ thống | Nối `customer_message_sent(status=refunded)` với `refund_ledger_write(ket_qua=ok)` theo `trace_id` và `refund_id`; đối soát mỗi giờ, cảnh báo ngay khi có ≥ 1 tin đã hoàn mà thiếu ghi sổ thành công. | Chỉ báo đã hoàn khi sổ cái xác nhận thành công; sau 3 lần lỗi 503 báo đang xử lý, chuyển nhân viên kèm trace; mọi lần thử lại dùng cùng khoá chống trùng. | Kỹ sư trưởng agent |
 | 18 | Ngữ cảnh | Nối `ticket_reopened(reason=amount_dispute)` và `audit_sample_checked(amount_correct=true)` theo `trace_id`; rà toàn bộ ca tranh chấp tiền hằng tuần; cảnh báo khi ≥ 1 ca mở lại vì cách tính dù tiền đúng. | Tin nhắn ghi phí gốc, tỉ lệ và phép tính: 30.000 đ × 50% = 15.000 đ; nêu nơi nhận tiền và cách yêu cầu giải thích. | Trưởng nhóm CSKH |
 | 4 | Giới hạn hệ thống | Nối `request_data_checked(missing_foreign_leg_data=true)` với `handoff_to_staff` và `refund_decision` theo `trace_id`; kiểm tra hằng ngày, cảnh báo khi ≥ 1 ca thiếu dữ liệu chặng nước ngoài không có handoff hoặc vẫn tự quyết hoàn. | Nhận diện thiếu dữ liệu trước khi quyết định; nói rõ giới hạn, chuyển nhân viên kèm tóm tắt và mã đơn; loại yêu cầu chặng quốc tế thiếu dữ liệu khỏi phạm vi pilot. | PM trợ lý hoàn phí |
 | 17 | Ngầm | Ghi `audit_sample_checked` với `trace_id`, `tariff_version_used`, `tariff_version_expected`, `amount_paid`, `amount_expected`; lấy ngẫu nhiên 100 đơn dưới 2 kg mỗi tuần (nếu ít hơn thì kiểm tra toàn bộ); cảnh báo khi ≥ 1% đơn kiểm tra dùng sai phiên bản hoặc sai tiền. | Vô hiệu hoá cache khi bảng giá mới có hiệu lực; ghi phiên bản và thời điểm hiệu lực vào trace; đối soát toàn bộ 212 đơn trong 9 ngày của tình huống, xử lý chênh lệch theo quy trình kế toán. | Kế toán trưởng |
@@ -67,8 +67,8 @@ Các ngưỡng dưới đây là **đề xuất cho pilot**, chưa phải kết 
 
 ## Lưu hồ sơ CP3
 
-- Đã lưu bộ nhãn người 1 ; bộ nhãn người 2 có 20 ca kèm căn cứ; đối chiếu 20/20 = 100%, không chỉnh nhãn để tăng đồng thuận.
+- Đã lưu hai bộ nhãn; bộ nhãn người 2 có 20 căn cứ; so sánh 20/20 = 100%, không chỉnh nhãn để tăng đồng thuận.
 - Đã có bảng khắc phục 5 loại và cập nhật mục 5 trong `ho_so_launch_v0.md`; các biện pháp và ngưỡng vẫn là đề xuất pilot.
-- Còn Nam tự rà, xác nhận nhãn người 2 và khai báo đúng quy trình thực hiện trước khi nộp; không trình bày bản có tham khảo AI/hướng dẫn thành bằng chứng tự gắn độc lập.
+- Nam và Văn đã tự rà, xác nhận theo thông tin người dùng ngày 21/11/2026. Giữ khai báo hỗ trợ AI và nguồn tham khảo trong báo cáo cá nhân.
 
 Nguồn đối chiếu: `CHECKPOINTS.md` (CP3), `RUBRIC.md` (C3), đề Word gốc và nhiệm vụ C trong `docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md`.

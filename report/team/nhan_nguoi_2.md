@@ -31,9 +31,9 @@ Mã nhãn: **ND** = Do người dùng · **HT** = Hệ thống · **NC** = Ngữ
 
 ## Lưu hồ sơ
 
-- Nam cần tự đọc lại 20 ca, xác nhận hoặc lập bộ nhãn cá nhân trước khi xem bộ nhãn của người 1. Sau khi so nhãn, giữ nguyên bản gốc; ghi nhãn thống nhất riêng trong `bang_loi.md`.
+- Ngày 21/11/2026, người dùng xác nhận Nam và Văn đã tự rà lại đủ 20 ca và xác nhận bộ nhãn; giữ nguyên 20 nhãn đã so, không chỉnh nhãn để tăng đồng thuận.
 - Đã nhận bộ nhãn người 1 do người dùng cung cấp và lưu nguyên nhãn tại `nhan_nguoi_1.md`; đối chiếu trùng 20/20 ca = 100%, không có ca bất đồng.
-- Phép so sánh hai tệp nhãn bằng `src/so_nhan.py` cho kết quả 20/20 = 100%; kết quả này không tự xác nhận quy trình hai người gắn độc lập.
+- `src/so_nhan.py` xác nhận 20/20 = 100%. Bộ nhãn ban đầu được chuẩn bị có hỗ trợ AI và tham khảo hướng dẫn; việc tự rà/xác nhận sau đó được ghi riêng, không mô tả lại thành một lượt gắn độc lập trong 8 phút.
 
 ## Nguồn
 

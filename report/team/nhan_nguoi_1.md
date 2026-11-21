@@ -2,6 +2,8 @@
 
 Người gắn nhãn 1 theo phân công nhóm: Kiều Đình Văn · MSSV: 2A202603376.
 
+**Xác nhận:** người dùng xác nhận ngày 21/11/2026 rằng Kiều Đình Văn và Phí Hoàng Nam đều đã tự rà lại 20 ca và xác nhận bộ nhãn. Khai báo quá trình dùng AI được giữ trong báo cáo cá nhân.
+
 ND = Do người dùng · HT = Hệ thống · NC = Ngữ cảnh · GH = Giới hạn hệ thống · NG = Ngầm.
 
 | Ca | Nhãn |
