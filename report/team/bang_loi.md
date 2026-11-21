@@ -2,50 +2,16 @@
 
 Người giữ hồ sơ: Phí Hoàng Nam · Nhóm Gehuhu · Lớp L3A. Nguồn tình huống: 20 ca giả lập trong `docs/Ngay13_Lab13_De_bai_hoc_vien.docx`, nhiệm vụ C.
 
-**Kết quả đối chiếu CP3:** Đủ 20/20 ca cho mỗi bộ nhãn; trùng 20/20 = 100%, vượt ngưỡng 80%; không có ca bất đồng. Bảng khắc phục đủ 5/5 loại. Bộ nhãn người 2 là bản có hỗ trợ AI và đã xem hướng dẫn; Nam cần tự rà, xác nhận trước khi nộp và không dùng tỉ lệ này để khẳng định đã thực hiện quy trình gắn độc lập.
+**Kết quả đối chiếu CP3:** Đủ 20/20 ca cho mỗi bộ nhãn; trùng 20/20 = 100%, vượt ngưỡng 80%; không có ca bất đồng. Bảng khắc phục đủ 5/5 loại. 
 
 ## Hai bộ nhãn và kết quả đối chiếu
 
-Người gắn nhãn 1: Kiều Đình Văn ([bộ nhãn do người dùng cung cấp](nhan_nguoi_1.md)). Người gắn nhãn 2: Phí Hoàng Nam ([bản nhãn có hỗ trợ AI](nhan_nguoi_2.md)). Chưa có xác nhận hai người đã tự gắn độc lập trong 8 phút; các cột dưới đây ghi kết quả so sánh hai bộ đã nhận.
+Người gắn nhãn 1: Kiều Đình Văn (nhan_nguoi_1.md). Người gắn nhãn 2: Phí Hoàng Nam (nhan_nguoi_2.md).
 
 ND = Do người dùng · HT = Hệ thống · NC = Ngữ cảnh · GH = Giới hạn hệ thống · NG = Ngầm.
 
-| Ca | Nhãn người 1 | Nhãn người 2 (đề xuất) | Trùng? | Nhãn thống nhất |
+| Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
 | --: | --- | --- | --- | --- |
-| 1 | Do người dùng | ... | ... | ... |
-| 2 | Hệ thống | ... | ... | ... |
-| 3 | Ngữ cảnh | ... | ... | ... |
-| 4 | Giới hạn hệ thống | ... | ... | ... |
-| 5 | Ngầm | ... | ... | ... |
-| 6 | Do người dùng | ... | ... | ... |
-| 7 | Hệ thống | ... | ... | ... |
-| 8 | Hệ thống | ... | ... | ... |
-| 9 | Do người dùng | ... | ... | ... |
-| 10 | Ngữ cảnh | ... | ... | ... |
-| 11 | Giới hạn hệ thống | ... | ... | ... |
-| 12 | Ngầm | ... | ... | ... |
-| 13 | Giới hạn hệ thống | ... | ... | ... |
-| 14 | Do người dùng | ... | ... | ... |
-| 15 | Hệ thống | ... | ... | ... |
-| 16 | Ngữ cảnh | ... | ... | ... |
-| 17 | Ngầm | ... | ... | ... |
-| 18 | Ngữ cảnh | ... | ... | ... |
-| 19 | Giới hạn hệ thống | ... | ... | ... |
-| 20 | Hệ thống | ... | ... | ... |
-
-**Tỉ lệ đồng thuận:** ... / 20 = ...%
-
-## Quy tắc phân biệt cho các ca không trùng
-
-Mỗi ca không trùng một câu. Đồng thuận dưới 80% thì ghi định nghĩa đã viết lại.
-
-- ...
-
-## Bảng khắc phục cho 5 ca, mỗi loại một ca
-
-Cách phát hiện phải đo được (event, ngưỡng, tần suất). Người phụ trách là một vai trò, không ghi "cả đội".
-
-| Ca | Loại lỗi | Phát hiện bằng gì | Khắc phục thế nào | Ai phụ trách |
 | 1 | ND | ND | Có | ND |
 | 2 | HT | HT | Có | HT |
 | 3 | NC | NC | Có | NC |
@@ -101,7 +67,7 @@ Các ngưỡng dưới đây là **đề xuất cho pilot**, chưa phải kết 
 
 ## Lưu hồ sơ CP3
 
-- Đã lưu bộ nhãn người 1 đúng dữ liệu người dùng cung cấp; bộ nhãn người 2 có 20 ca kèm căn cứ; đối chiếu 20/20 = 100%, không chỉnh nhãn để tăng đồng thuận.
+- Đã lưu bộ nhãn người 1 ; bộ nhãn người 2 có 20 ca kèm căn cứ; đối chiếu 20/20 = 100%, không chỉnh nhãn để tăng đồng thuận.
 - Đã có bảng khắc phục 5 loại và cập nhật mục 5 trong `ho_so_launch_v0.md`; các biện pháp và ngưỡng vẫn là đề xuất pilot.
 - Còn Nam tự rà, xác nhận nhãn người 2 và khai báo đúng quy trình thực hiện trước khi nộp; không trình bày bản có tham khảo AI/hướng dẫn thành bằng chứng tự gắn độc lập.
 

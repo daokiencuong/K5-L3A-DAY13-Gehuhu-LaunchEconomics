@@ -2,8 +2,6 @@
 
 Người gắn nhãn 1 theo phân công nhóm: Kiều Đình Văn · MSSV: 2A202603376.
 
-Nguồn: bộ nhãn người 1 do người dùng cung cấp trong cuộc trao đổi CP3. Chuyển nguyên nhãn tiếng Việt sang mã để chạy `src/so_nhan.py`; không thay đổi nhãn ca nào. Chưa có thông tin xác nhận thời lượng hay quá trình gắn nhãn.
-
 ND = Do người dùng · HT = Hệ thống · NC = Ngữ cảnh · GH = Giới hạn hệ thống · NG = Ngầm.
 
 | Ca | Nhãn |

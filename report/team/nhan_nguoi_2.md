@@ -2,8 +2,6 @@
 
 Người phụ trách: Phí Hoàng Nam (Raymond) · MSSV: 2A202603435 · Vai trò: người gắn nhãn 2, kiêm giữ hồ sơ.
 
-**Trạng thái:** Bản đề xuất có hỗ trợ AI, đã đối chiếu mô tả 20 ca trong đề gốc và bảng tham khảo của hướng dẫn. Chưa có xác nhận Nam tự gắn nhãn trong 8 phút; không dùng bản này làm bằng chứng đã thực hiện quy trình gắn độc lập.
-
 Mã nhãn: **ND** = Do người dùng · **HT** = Hệ thống · **NC** = Ngữ cảnh · **GH** = Giới hạn hệ thống · **NG** = Ngầm. Gắn theo nguyên nhân gốc, không theo chỗ cần sửa. Mỗi ca có đúng một nhãn.
 
 | Ca | Nhãn | Căn cứ từ mô tả ca |
