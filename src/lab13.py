@@ -5,6 +5,7 @@ Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
 import pandas as pd
+from statistics import NormalDist
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
 GIA_VAO = 26        # đồng cho 1.000 token đầu vào
@@ -214,6 +215,63 @@ def in_bang_b(runs, reqs):
           f"({cps_xem_100_thuc_te/BASELINE:.2f}x)")
 
 
+def co_mau_hai_ty_le(p1, p2, alpha=0.05, power=0.80):
+    """Cỡ mẫu mỗi nhánh cho kiểm định hai tỷ lệ độc lập."""
+    za = NormalDist().inv_cdf(1 - alpha / 2)
+    zb = NormalDist().inv_cdf(power)
+    p_bar = (p1 + p2) / 2
+    tu_so = (za * math.sqrt(2 * p_bar * (1 - p_bar))
+             + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2
+    return math.ceil(tu_so / (p2 - p1) ** 2)
+
+
+def in_bang_d(reqs):
+    """Tính D1 và in các câu trả lời thiết kế D2 để ghi vào pilot_plan.yaml."""
+    p1, alpha, power, icc = 0.70, 0.05, 0.80, 0.02
+    n_5_diem = co_mau_hai_ty_le(p1, 0.75, alpha, power)
+    n_6_diem = co_mau_hai_ty_le(p1, 0.76, alpha, power)
+
+    de_staff_75 = 1 + (75 - 1) * icc
+    n_staff_75 = math.ceil(n_5_diem * de_staff_75)
+    staff_each_needed = math.ceil(n_staff_75 / 75)
+    max_neff_20_staff = 20 / icc
+    max_neff_6_depot = 6 / icc
+
+    n_staff_each = 20
+    m = 1
+    while n_staff_each * m / (1 + (m - 1) * icc) < n_6_diem:
+        m += 1
+    de_m = 1 + (m - 1) * icc
+    n_eff = n_staff_each * m / de_m
+
+    from statsmodels.stats.power import NormalIndPower
+    from statsmodels.stats.proportion import proportion_effectsize
+    power_at_5 = NormalIndPower().power(
+        effect_size=proportion_effectsize(0.70, 0.75),
+        nobs1=n_6_diem, alpha=alpha, ratio=1, alternative='two-sided'
+    )
+
+    print('\nD1 · Cỡ mẫu và hệ số thiết kế')
+    print(f"Chia theo yêu cầu: {n_5_diem:,} yêu cầu/nhóm cho MDE 5 điểm.")
+    print(f"Theo nhân viên, m=75: DE={de_staff_75:.2f}; "
+          f"{n_staff_75:,} yêu cầu/nhóm, cần {staff_each_needed} nhân viên/nhóm "
+          f"({staff_each_needed * 2} tổng), không đủ 40.")
+    print(f"20 nhân viên/nhóm: tối đa c/ICC={max_neff_20_staff:,.0f} mẫu hiệu dụng, "
+          f"thấp hơn {n_5_diem:,}.")
+    print(f"6 depot/nhóm: tối đa c/ICC={max_neff_6_depot:,.0f} mẫu hiệu dụng.")
+    print(f"MDE 6 điểm: {n_6_diem} mẫu hiệu dụng/nhóm; 20 nhân viên/nhóm cần "
+          f"m={m} yêu cầu/nhân viên, DE={de_m:.2f}, n_eff={n_eff:.1f}.")
+    print(f"Nếu hiệu ứng thật chỉ là 5 điểm, power tại n_eff={n_6_diem} "
+          f"còn {power_at_5:.2f}.")
+
+    reopen_all = reqs['mo_lai_trong_7_ngay'].astype(int).mean()
+    scope = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+    reopen_scope = scope['mo_lai_trong_7_ngay'].astype(int).mean()
+    print(f"Mở lại trong 7 ngày hiện tại: {reopen_all:.2%} toàn mẫu "
+          f"({int(reqs['mo_lai_trong_7_ngay'].astype(int).sum())}/{len(reqs)}); "
+          f"{reopen_scope:.2%} trong phạm vi pilot.")
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -224,6 +282,4 @@ if __name__ == '__main__':
     in_bang_a3(runs, reqs)
     in_bang_a4(runs, reqs)
     in_bang_b(runs, reqs)
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    in_bang_d(reqs)
