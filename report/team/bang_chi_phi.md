@@ -36,7 +36,6 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 | quoc_te | 150 | 27,3% | 2,32 | 22.515 đ | 1,88× |
 | doi_tac | 68 | 54,4% | 1,88 | 10.215 đ | 0,85× |
 
-- Loại nào không đáng để trợ lý xử lý? Với loại đó, cho chạy lại tới 3 lần có giúp không? **Quốc tế** không đáng: 22.515 đ/ca thành công (1,88× nhân viên; simulated), chỉ 27,3% thành công. Tỉ lệ chạy đúng giảm theo lần thử: 30,0% → 11,4% → 2,2%; chạy lại tới 3 lần không giúp đủ để bù chi phí.
 - Loại nào không đáng để trợ lý xử lý? Với loại đó, cho chạy lại tới 3 lần có giúp không? **Quốc tế** không đáng: 22.515 đ/ca thành công (1,88× nhân viên, simulated), chỉ 27,3% thành công. Tỉ lệ chạy đúng giảm theo lần thử: 30,0% → 11,4% → 2,2% (lỗi lặp lại trên cùng yêu cầu), nên chạy lại tới 3 lần chỉ tốn thêm tiền. `doi_tac` sát ngưỡng (0,85×, simulated) và có điều khoản riêng, cũng loại khỏi phạm vi pilot.
 
 ## A4 · Chi phí cố định (phạm vi noi_dia + hang_nang)
@@ -46,7 +45,6 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 | 45.000 yêu cầu/tháng | 33.750 | 1.185 đ | 4.599 đ | 0,38× |
 | Một nửa khối lượng | 16.875 | 2.370 đ | 5.784 đ | 0,48× |
 
-- Chi phí cố định có đổi kết luận không? Ở khối lượng nào? **Không**: ngay cả ở nửa khối lượng, tổng là 5.784 đ (0,48× mức 12.000 đ; simulated); tuy vậy chi phí cố định tăng từ 1.185 lên 2.370 đ/việc.
 - Chi phí cố định có đổi kết luận không? Ở khối lượng nào? **Không** ở quy mô đầy đủ: 4.599 đ = 0,38× (simulated, gốc 3.414 đ = 3.072.513 / 900 + cố định 1.185 đ). Ở nửa khối lượng, cố định gấp đôi lên 2.370 đ/việc, tổng 5.784 đ = 0,48× (simulated); hồ sơ phải ghi rõ số đã cộng cố định ở khối lượng nào.
 
 ## B1 · Đổi từng yếu tố
