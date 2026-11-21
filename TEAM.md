@@ -23,7 +23,7 @@ Bốn vai của lab:
 * **Người gắn nhãn 1:** đọc đề, theo dõi điều kiện "Xong khi"; gắn nhãn 20 ca độc lập ở CP3.
 * **Người gắn nhãn 2, kiêm giữ hồ sơ:** điền `report/team/ho_so_launch_v0.md` từ đầu buổi; gắn nhãn 20 ca độc lập ở CP3.
 
-Đổi người viết code sau giờ giải lao, để ít nhất hai người trong nhóm tự tay tính được chi phí.
+Nhóm giữ Đào Kiên Cường ở vai người viết code xuyên suốt; người kiểm số phụ trách đối chiếu kết quả độc lập.
 
 ## Cá nhân
 
@@ -41,15 +41,19 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
-*
+* Người viết code: hoàn thiện và chạy `src/lab13.py` cho các nhiệm vụ A, B, D1 và phần tính chỉ số E1.
 
 ### Đóng góp cụ thể
 
-*
+* CP1: triển khai ba hàm A1, mô hình chi phí A2, bảng theo loại yêu cầu A3 và chi phí cố định A4.
+* CP2: tính chín kịch bản độ nhạy B1, kịch bản kết hợp B2, chi phí cả hệ thống theo giới hạn chạy B3 và xem lại 100% ở B4.
+* CP4: tính cỡ mẫu và hệ số thiết kế D1, gồm các phương án chia theo yêu cầu, nhân viên và depot.
+* CP5: tính thử ba chỉ số E1 từ dữ liệu yêu cầu.
 
 ### Bằng chứng
 
-*
+* `src/lab13.py`; kết quả tính được ghi trong `report/team/bang_chi_phi.md`, `report/team/pilot_plan.yaml` và `report/team/chi_so.md`.
+* Báo cáo cá nhân: `report/team/2A202603396_DaoKienCuong.md`.
 
 ## Kiều Đình Văn - 2A202603376
 
