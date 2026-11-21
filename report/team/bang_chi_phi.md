@@ -29,23 +29,23 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 
 ## A3 · Tách theo loại yêu cầu
 
-| Loại | Số yêu cầu | Tỉ lệ thành công | Số lần chạy mỗi yêu cầu | Chi phí mỗi việc thành công | So với 12.000 đ |
+| Loại | Số yêu cầu | Tỉ lệ thành công | Số lần chạy mỗi yêu cầu | Chi phí mỗi việc thành công [simulated] | So với 12.000 đ [simulated] |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | noi_dia | 824 | 95,0% | 1,11 | 2.696 đ | 0,22× |
 | hang_nang | 158 | 74,1% | 1,47 | 8.221 đ | 0,69× |
 | quoc_te | 150 | 27,3% | 2,32 | 22.515 đ | 1,88× |
 | doi_tac | 68 | 54,4% | 1,88 | 10.215 đ | 0,85× |
 
-- Loại nào không đáng để trợ lý xử lý? Với loại đó, cho chạy lại tới 3 lần có giúp không? **Quốc tế** không đáng: 22.515 đ/ca thành công (1,88× nhân viên), chỉ 27,3% thành công. Tỉ lệ chạy đúng giảm theo lần thử: 30,0% → 11,4% → 2,2%; chạy lại tới 3 lần không giúp đủ để bù chi phí.
+- Loại nào không đáng để trợ lý xử lý? Với loại đó, cho chạy lại tới 3 lần có giúp không? **Quốc tế** không đáng: 22.515 đ/ca thành công (1,88× nhân viên; simulated), chỉ 27,3% thành công. Tỉ lệ chạy đúng giảm theo lần thử: 30,0% → 11,4% → 2,2%; chạy lại tới 3 lần không giúp đủ để bù chi phí.
 
 ## A4 · Chi phí cố định (phạm vi noi_dia + hang_nang)
 
-| Khối lượng | Việc thành công mỗi tháng | Chi phí cố định mỗi việc | Chi phí mỗi việc thành công + cố định | So với 12.000 đ |
+| Khối lượng | Việc thành công mỗi tháng | Chi phí cố định mỗi việc | Chi phí mỗi việc thành công + cố định [simulated] | So với 12.000 đ [simulated] |
 | --- | ---: | ---: | ---: | ---: |
 | 45.000 yêu cầu/tháng | 33.750 | 1.185 đ | 4.599 đ | 0,38× |
 | Một nửa khối lượng | 16.875 | 2.370 đ | 5.784 đ | 0,48× |
 
-- Chi phí cố định có đổi kết luận không? Ở khối lượng nào? **Không**: ngay cả ở nửa khối lượng, tổng là 5.784 đ (0,48× mức 12.000 đ); tuy vậy chi phí cố định tăng từ 1.185 lên 2.370 đ/việc.
+- Chi phí cố định có đổi kết luận không? Ở khối lượng nào? **Không**: ngay cả ở nửa khối lượng, tổng là 5.784 đ (0,48× mức 12.000 đ; simulated); tuy vậy chi phí cố định tăng từ 1.185 lên 2.370 đ/việc.
 
 ## B1 · Đổi từng yếu tố
 
