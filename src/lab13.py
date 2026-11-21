@@ -140,6 +140,80 @@ def in_bang_a4(runs, reqs):
               f"{cps_tong/BASELINE:10.2f}x")
 
 
+def in_bang_b(runs, reqs):
+    """Tính độ nhạy B1–B4 từ cùng mô hình chi phí A2."""
+    goc = mo_hinh(runs, reqs)
+    cps_goc = goc['cps']
+    kich_ban = [
+        ('Giá token gấp đôi', dict(gia_vao=52, gia_ra=260)),
+        ('Giá token giảm một nửa', dict(gia_vao=13, gia_ra=65)),
+        ('Tỉ lệ xem lại gấp đôi', dict(he_so_xem_lai=2)),
+        ('Tỉ lệ xem lại giảm một nửa', dict(he_so_xem_lai=0.5)),
+        ('Số ca làm lại gấp đôi', dict(he_so_lam_lai=2)),
+        ('Số ca làm lại giảm một nửa', dict(he_so_lam_lai=0.5)),
+        ('Lương nhân viên tăng 25%', dict(luong_phut=2500)),
+        ('Chỉ cho chạy tối đa 2 lần', dict(max_lan_chay=2)),
+        ('Chỉ cho chạy 1 lần', dict(max_lan_chay=1)),
+    ]
+
+    print('\nB1 · Độ nhạy từng yếu tố (so với A2)')
+    print(f"{'Kịch bản':30s} {'CPS (đ)':>12s} {'Thay đổi':>11s}")
+    for ten, tham_so in kich_ban:
+        kq = mo_hinh(runs, reqs, **tham_so)
+        thay_doi = (kq['cps'] / cps_goc - 1) * 100
+        print(f"{ten:30s} {kq['cps']:12,.0f} {thay_doi:+10.1f}%")
+
+    cap_doi = mo_hinh(runs, reqs, gia_vao=52, gia_ra=260,
+                      he_so_xem_lai=2)
+    cap_doi_pct = (cap_doi['cps'] / cps_goc - 1) * 100
+    print(f"\nB2 · Token và xem lại cùng gấp đôi: "
+          f"{cap_doi['cps']:,.0f} đ ({cap_doi_pct:+.1f}%)")
+    print('Xếp hạng: 1. số ca làm lại · 2. tỉ lệ xem lại · 3. lương nhân viên')
+
+    print('\nB3 · Chi phí cả hệ thống khi giới hạn số lần chạy')
+    print(f"{'Giới hạn':>10s} {'Chi phí trợ lý':>18s} {'Không thành công':>18s} "
+          f"{'Chi phí hệ thống':>18s} {'CPS':>12s}")
+    for gioi_han in [1, 2, 3]:
+        kq = mo_hinh(runs, reqs, max_lan_chay=gioi_han)
+        that_bai = len(reqs) - kq['thanh_cong']
+        chi_phi_he_thong = kq['tong'] + BASELINE * that_bai
+        print(f"{gioi_han:10d} {kq['tong']:18,.0f} {that_bai:18d} "
+              f"{chi_phi_he_thong:18,.0f} {kq['cps']:12,.0f}")
+
+    pham_vi = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])].copy()
+    ids_pham_vi = set(pham_vi['request_id'])
+    runs_pham_vi = runs[runs['request_id'].isin(ids_pham_vi)]
+    so_can_xem = runs_pham_vi.loc[
+        runs_pham_vi['status'] == 'ok', 'request_id'
+    ].nunique()
+    so_ca_lam_lai = int((pham_vi['ket_qua'] == 'lam_lai').sum())
+    tien_token_tool = float(
+        (runs_pham_vi['tokens_in'] / 1000 * GIA_VAO
+         + runs_pham_vi['tokens_out'] / 1000 * GIA_RA
+         + runs_pham_vi['tool_calls'] * GIA_TOOL).sum()
+    )
+    tong_xem_100 = tien_token_tool + so_can_xem * 5 * LUONG_PHUT \
+        + so_ca_lam_lai * 9 * LUONG_PHUT
+    cps_xem_100 = tong_xem_100 / int((pham_vi['ket_qua'] == 'thanh_cong').sum())
+    # Hướng dẫn B4 yêu cầu kiểm tra độ nhạy bằng mức trung bình 15,3 phút
+    # trên toàn bộ ca làm lại, áp vào 48 ca làm lại trong phạm vi pilot.
+    phut_lam_lai_tb = reqs.loc[
+        reqs['ket_qua'] == 'lam_lai', 'phut_lam_lai_simulated'
+    ].astype(float).mean()
+    tong_xem_100_thuc_te = tien_token_tool + so_can_xem * 5 * LUONG_PHUT \
+        + so_ca_lam_lai * phut_lam_lai_tb * LUONG_PHUT
+    cps_xem_100_thuc_te = tong_xem_100_thuc_te / int(
+        (pham_vi['ket_qua'] == 'thanh_cong').sum()
+    )
+    print('\nB4 · Xem lại 100% (noi_dia + hang_nang)')
+    print(f"Yêu cầu có ít nhất một lần chạy ok: {so_can_xem}; "
+          f"làm lại: {so_ca_lam_lai}; token + tool: {tien_token_tool:,.0f} đ")
+    print(f"Giả định làm lại 9 phút: {cps_xem_100:,.0f} đ/việc "
+          f"({cps_xem_100/BASELINE:.2f}x); theo thời gian simulated "
+          f"{phut_lam_lai_tb:.1f} phút/ca: {cps_xem_100_thuc_te:,.0f} đ "
+          f"({cps_xem_100_thuc_te/BASELINE:.2f}x)")
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -149,7 +223,7 @@ if __name__ == '__main__':
         print(f'{ten:12s} {gia_tri:>14,.0f}')
     in_bang_a3(runs, reqs)
     in_bang_a4(runs, reqs)
-    # TODO CP2 · Nhiệm vụ B: đổi từng yếu tố, ghi vào bảng độ nhạy.
+    in_bang_b(runs, reqs)
     # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
     #   from statsmodels.stats.proportion import proportion_effectsize
     #   from statsmodels.stats.power import NormalIndPower
