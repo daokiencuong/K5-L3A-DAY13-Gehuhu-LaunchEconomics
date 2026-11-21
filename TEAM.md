@@ -55,15 +55,16 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Phần việc phụ trách
 
-*
+* Người gắn nhãn 1: đọc đề, theo dõi điều kiện "Xong khi" và gắn nhãn 20 ca lỗi ở CP3.
 
 ### Đóng góp cụ thể
 
-*
+* Gắn nhãn người 1 cho 20 ca (ND 4, HT 5, NC 4, GH 4, NG 3); so với người 2 trùng 20/20 = 100%.
+* Dọn lại `bang_loi.md` sau merge: một bảng so nhãn duy nhất, bỏ dòng trống và bảng bị lỗi.
 
 ### Bằng chứng
 
-*
+* Commit `d438c50` (nhánh `gn1`, PR #1); `report/team/nhan_nguoi_1.md`; `report/team/bang_loi.md`; `report/team/2A202603376_KieuDinhVan.md`.
 
 ## Phí Hoàng Nam - 2A202603435
 
